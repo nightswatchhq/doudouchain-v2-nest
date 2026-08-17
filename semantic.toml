@@ -5,7 +5,7 @@
 schema_version = 1
 
 [nest]
-description = "Raw on-chain event data for the ICHICHAIN deployment on Arbitrum One. The source Graph deployment's entity mappings and IPFS-file templates are not reproduced."
+description = "Raw on-chain event data for the DOUDOCHAIN_V2 deployment on Arbitrum One. The source Graph deployment's entity mappings and IPFS-file templates are not reproduced."
 
 [table.collection_book_upgradeable__collection_book_claimed]
 description = "`CollectionBookClaimed(address,uint256,uint8,uint256)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"

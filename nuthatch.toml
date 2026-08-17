@@ -1,5 +1,5 @@
 [nest]
-name = "ichichain-nest"
+name = "doudouchain-v2-nest"
 chain = "arbitrum-one"
 chain_id = 42161
 rpc_urls = [
