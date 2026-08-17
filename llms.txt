@@ -1,0 +1,117 @@
+# nuthatch nest on arbitrum-one
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `ichichain` = 0x4749289f940f0c6b7cf68a19b0bdc611b80cdb0a
+- `reveal_on_chain_data` = 0x4749289f940f0c6b7cf68a19b0bdc611b80cdb0a
+- `doudo_series_ops_module` = 0x21a55c40a4dd25ec83dec24527cddfb232ad7e47
+- `merchant_series_registry` = 0x178ef41099ac23730e63f7593a8d83c85ac496ee
+- `merchant_series_publisher` = 0xd4df68df78e9e5389288b5c1e91eb3024060e363
+- `doudo_core_vrf_router` = 0x13ee37a43b012a772765089d8711b0be42984010
+- `doudo_vrf_router` = 0x13ee37a43b012a772765089d8711b0be42984010
+- `doudo_bundle_module` = 0x0ade18ad89b9971229d5e6588a76d4beeaae4b8f
+- `doudo_refund_module` = 0xd1d215c050ae51cfa6eae0b236decd129ceddd3f
+- `doudo_redraw_module` = 0xedc87ef2124ab0ee4b6fc1522a9b0f458a9b61ed
+- `doudo_collection_reward_module` = 0x1f7d42b6e6064911c0e690ca44dc7e7d592a4549
+- `collection_book_upgradeable` = 0x150e44c0e1d9c80de474d9232cd958eaf05497f6
+- `contract` = 0xf1d77d5485cd80ccc32ada1100e40558eb58b5ca
+
+## Tables (one per contract event)
+- `collection_book_upgradeable__collection_book_claimed` - CollectionBookClaimed(address,uint256,uint8,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, bookId, rewardKind, rewardData)
+- `collection_book_upgradeable__collection_book_created` - CollectionBookCreated(uint256,string,uint8,uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, bookId, name, rewardKind, rewardData, active)
+- `collection_book_upgradeable__collection_book_expiration_updated` - CollectionBookExpirationUpdated(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, bookId, expiresAt)
+- `collection_book_upgradeable__collection_book_reward_target_updated` - CollectionBookRewardTargetUpdated(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, doudochainV2RewardTarget)
+- `collection_book_upgradeable__collection_book_slot_defined` - CollectionBookSlotDefined(uint256,uint256,address,uint256,uint256,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, bookId, slotIndex, sourceContract, seriesID, prizeId, quantity)
+- `collection_book_upgradeable__collection_book_slot_emptied` - CollectionBookSlotEmptied(address,uint256,uint256,address,uint256,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, bookId, slotIndex, sourceContract, tokenId, newFilledCount)
+- `collection_book_upgradeable__collection_book_slot_filled` - CollectionBookSlotFilled(address,uint256,uint256,address,uint256,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, bookId, slotIndex, sourceContract, tokenId, newFilledCount)
+- `collection_book_upgradeable__collection_book_status_updated` - CollectionBookStatusUpdated(uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, bookId, active)
+- `contract__admin_changed` - AdminChanged(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, previousAdmin, newAdmin)
+- `contract__approval` - Approval(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, approved, tokenId)
+- `contract__approval_for_all` - ApprovalForAll(address,address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, operator, approved)
+- `contract__legacy_membership_migrated` - LegacyMembershipMigrated(uint256,address,uint256,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenId, owner, membershipLevel, totalRedeemed, currentRoundRedeemed, lastActiveTimestamp)
+- `contract__legacy_voucher_migrated` - LegacyVoucherMigrated(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenId, owner, voucherTypeId)
+- `contract__membership_expired` - MembershipExpired(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, tokenId)
+- `contract__membership_level_created` - MembershipLevelCreated(uint256,string,uint256,string,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, levelIndex, name, threshold, membershipTokenURI, rewardBasisPoints)
+- `contract__membership_level_updated` - MembershipLevelUpdated(uint256,uint256,string,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, levelIndex, threshold, membershipTokenURI, rewardBasisPoints)
+- `contract__membership_n_f_t_burned` - MembershipNFTBurned(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, tokenId)
+- `contract__membership_renewed` - MembershipRenewed(address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, tokenId, newExpiryDate)
+- `contract__membership_transferred` - MembershipTransferred(address,address,uint256,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId, levelName)
+- `contract__membership_upgraded` - MembershipUpgraded(address,uint256,uint256,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, tokenId, level, levelName)
+- `contract__role_admin_changed` - RoleAdminChanged(bytes32,bytes32,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, role, previousAdminRole, newAdminRole)
+- `contract__role_granted` - RoleGranted(bytes32,address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, role, account, sender)
+- `contract__role_revoked` - RoleRevoked(bytes32,address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, role, account, sender)
+- `contract__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId)
+- `contract__voucher_minted` - VoucherMinted(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenId, recipient, voucherTypeId)
+- `contract__voucher_total_redeemed` - VoucherTotalRedeemed(uint256[],address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenIds, redeemer, totalAmount, additionalReward)
+- `contract__voucher_transferred` - VoucherTransferred(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId)
+- `contract__voucher_type_created` - VoucherTypeCreated(uint256,uint256,uint256,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, voucherTypeId, amount, maxPerUser, tokenURI)
+- `contract__voucher_type_updated` - VoucherTypeUpdated(uint256,uint256,uint256,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, voucherTypeId, amount, maxPerUser, tokenURI)
+- `contract__vouchers_issued_from_subscription` - VouchersIssuedFromSubscription(address,uint256[],uint256[],uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, voucherTypeIds, amounts, totalAmount)
+- `doudo_bundle_module__bundle_rebate_tier_configured` - BundleRebateTierConfigured(uint256,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, tierIndex, minimumTicketQuantity, rebatePoints)
+- `doudo_bundle_module__bundle_rebate_tiers_cleared` - BundleRebateTiersCleared(uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID)
+- `doudo_bundle_module__ticket_purchase_minted` - TicketPurchaseMinted(uint256,address,uint256,uint256,bool,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, buyer, ticketQuantity, priceInPoints, revealImmediately, firstTokenID)
+- `doudo_bundle_module__ticket_purchase_rebate_paid` - TicketPurchaseRebatePaid(uint256,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, buyer, ticketQuantity, rebatePoints)
+- `doudo_collection_reward_module__collection_reward_config_set` - CollectionRewardConfigSet(uint256,uint8,uint256,uint256,uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, collectionBookID, rewardKind, pointsAmount, seriesID, prizeID, active)
+- `doudo_collection_reward_module__collection_reward_minted` - CollectionRewardMinted(uint256,address,uint8,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, collectionBookID, user, rewardKind, amount, tokenID)
+- `doudo_collection_reward_module__series_unlocked_for` - SeriesUnlockedFor(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, user, expires)
+- `doudo_core_vrf_router__requester_updated` - RequesterUpdated(address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requester, allowed)
+- `doudo_core_vrf_router__vrf_config_updated` - VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, vrfCoordinator, subscriptionId, keyHash, callbackGasLimit, requestConfirmations, operator)
+- `doudo_core_vrf_router__vrf_random_words_fulfilled` - VrfRandomWordsFulfilled(uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, callbackTarget)
+- `doudo_core_vrf_router__vrf_random_words_requested` - VrfRandomWordsRequested(uint256,address,address,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, requester, callbackTarget, numWords)
+- `doudo_redraw_module__consolation_draw_balance_updated` - ConsolationDrawBalanceUpdated(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, user, balance)
+- `doudo_redraw_module__new_consolation_prize` - NewConsolationPrize(uint256,uint256,string,string,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, subPrizeID, prizeGroup, subPrizeName, remainingQuantity)
+- `doudo_redraw_module__redraw_config_updated` - RedrawConfigUpdated(uint256,uint16,uint16) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, mainBurnCount, consolationBurnCount)
+- `doudo_redraw_module__redraw_enabled_updated` - RedrawEnabledUpdated(uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, enabled)
+- `doudo_redraw_module__redraw_fulfilled` - RedrawFulfilled(uint256,uint256,address,uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, seriesID, user, tokenID, consolation)
+- `doudo_redraw_module__redraw_main_config_updated` - RedrawMainConfigUpdated(uint256,uint16,uint16) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, mainBurnCount, mainMintCount)
+- `doudo_redraw_module__redraw_minted` - RedrawMinted(uint256,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, user, quantity, firstTokenID)
+- `doudo_redraw_module__redraw_requested` - RedrawRequested(uint256,uint256,address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, seriesID, user, consolation)
+- `doudo_redraw_module__router_updated` - RouterUpdated(address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, router)
+- `doudo_redraw_module__update_consolation_prize` - UpdateConsolationPrize(uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, subPrizeID, remainingQuantity)
+- `doudo_refund_module__refund_claimed` - RefundClaimed(uint256,address,uint256[],uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, user, tokenIDs, refundPoints)
+- `doudo_refund_module__refund_series` - RefundSeries(uint256,bool,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, isRefund, refundPointsPerTicket)
+- `doudo_series_ops_module__mint_lock_updated` - MintLockUpdated(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, owner, until)
+- `doudo_series_ops_module__series_lock_duration_updated` - SeriesLockDurationUpdated(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, duration)
+- `doudo_series_ops_module__series_max_per_wallet_updated` - SeriesMaxPerWalletUpdated(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, maxPerWallet)
+- `doudo_series_ops_module__series_reveal_enabled_updated` - SeriesRevealEnabledUpdated(uint256,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, enabled)
+- `doudo_vrf_router__requester_updated` - RequesterUpdated(address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requester, allowed)
+- `doudo_vrf_router__vrf_config_updated` - VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, vrfCoordinator, subscriptionId, keyHash, callbackGasLimit, requestConfirmations, operator)
+- `doudo_vrf_router__vrf_random_words_fulfilled` - VrfRandomWordsFulfilled(uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, callbackTarget)
+- `doudo_vrf_router__vrf_random_words_requested` - VrfRandomWordsRequested(uint256,address,address,uint32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, requester, callbackTarget, numWords)
+- `ichichain__admin_minted` - AdminMinted(address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, operator, to, seriesID, quantity)
+- `ichichain__approval` - Approval(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, approved, tokenId)
+- `ichichain__approval_for_all` - ApprovalForAll(address,address,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, operator, approved)
+- `ichichain__consecutive_transfer` - ConsecutiveTransfer(uint256,uint256,address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, fromTokenId, toTokenId, from, to)
+- `ichichain__last_prize_draw` - LastPrizeDraw(uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, seriesID, quantity)
+- `ichichain__last_prize_winner` - LastPrizeWinner(uint256,uint256[]) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, randomWord)
+- `ichichain__mint_lock_updated` - MintLockUpdated(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, owner, until)
+- `ichichain__new_series` - NewSeries(uint256,string,uint256,uint256,uint256,uint256,bool,uint256,uint256,string,string,string,string,address,bool,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, seriesName, totalTicketNumbers, remainingTicketNumbers, priceInUSDTWei, priceInTWD, isGoodsArrived, estimateDeliverTime, exchangeExpireTime, exchangeTokenURI, unrevealTokenURI, revealTokenURI, seriesMetaDataURI, lastPrizeOwner, isRefund, isPreOrder)
+- `ichichain__new_sub_prize` - NewSubPrize(uint256,uint256,string,string,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, subPrizeID, prizeGroup, subPrizeName, subPrizeRemainingQuantity)
+- `ichichain__new_ticket_status` - NewTicketStatus(uint256,uint256,uint256,bool,bool,address,uint16) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenID, seriesID, tokenRevealedPrize, tokenExchange, tokenRevealed, tokenOwner, luckyNumber)
+- `ichichain__series_unlocked_for` - SeriesUnlockedFor(uint256,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, user, expires)
+- `ichichain__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId)
+- `ichichain__update_prize` - UpdatePrize(uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, subPrizeID, subPrizeRemainingQuantity)
+- `ichichain__update_series_information` - UpdateSeriesInformation(uint256,bool,uint256,uint256,string,string,string,string) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, isGoodsArrived, estimateDeliverTime, exchangeExpireTime, exchangeTokenURI, unrevealTokenURI, revealTokenURI, seriesMetaDataURI)
+- `ichichain__update_series_last_prize_owner` - UpdateSeriesLastPrizeOwner(uint256,address[]) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, lastPrizeOwner)
+- `ichichain__update_series_remaining_ticket_numbers` - UpdateSeriesRemainingTicketNumbers(uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesID, remainingTicketNumbers)
+- `ichichain__update_ticket_status` - UpdateTicketStatus(uint256,uint256,uint256,bool,bool) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenID, seriesID, tokenRevealedPrize, tokenExchange, tokenRevealed)
+- `ichichain__vrf_router_updated` - VrfRouterUpdated(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, vrfRouter, operator)
+- `merchant_series_publisher__series_source_tagged` - SeriesSourceTagged(address,uint256,uint8,uint8) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, core, seriesID, packingType, sourceType)
+- `merchant_series_registry__series_merchant_linked` - SeriesMerchantLinked(address,uint256,bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesContract, seriesID, merchantRef, operator)
+- `merchant_series_registry__series_merchant_relinked` - SeriesMerchantRelinked(address,uint256,bytes32,bytes32,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, seriesContract, seriesID, previousMerchantRef, newMerchantRef, operator)
+- `reveal_on_chain_data__reveal_draw_fulfilled` - RevealDrawFulfilled(uint256,uint256,uint256[]) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, seriesID, randomWords)
+- `reveal_on_chain_data__reveal_draw_sent` - RevealDrawSent(uint256,uint256[]) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, requestId, tokenIDs)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.

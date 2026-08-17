@@ -1,0 +1,1535 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "Raw on-chain event data for the ICHICHAIN deployment on Arbitrum One. The source Graph deployment's entity mappings and IPFS-file templates are not reproduced."
+
+[table.collection_book_upgradeable__collection_book_claimed]
+description = "`CollectionBookClaimed(address,uint256,uint8,uint256)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookClaimed(address,uint256,uint8,uint256) event"
+
+[table.collection_book_upgradeable__collection_book_claimed.columns]
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardData = "The `rewardData` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardKind = "The `rewardKind` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_claimed.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "bookId",
+    "rewardData",
+]
+overflows_dec = [
+    "bookId",
+    "rewardData",
+]
+
+[table.collection_book_upgradeable__collection_book_created]
+description = "`CollectionBookCreated(uint256,string,uint8,uint256,bool)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookCreated(uint256,string,uint8,uint256,bool) event"
+
+[table.collection_book_upgradeable__collection_book_created.columns]
+active = "The `active` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `active = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `active = 'true'` or `CAST(active AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+name = "The `name` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardData = "The `rewardData` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardKind = "The `rewardKind` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_created.footguns]
+big_ints = [
+    "bookId",
+    "rewardData",
+]
+overflows_dec = [
+    "bookId",
+    "rewardData",
+]
+bools = ["active"]
+
+[table.collection_book_upgradeable__collection_book_expiration_updated]
+description = "`CollectionBookExpirationUpdated(uint256,uint256)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookExpirationUpdated(uint256,uint256) event"
+
+[table.collection_book_upgradeable__collection_book_expiration_updated.columns]
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+expiresAt = "The `expiresAt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_expiration_updated.footguns]
+big_ints = [
+    "bookId",
+    "expiresAt",
+]
+overflows_dec = [
+    "bookId",
+    "expiresAt",
+]
+
+[table.collection_book_upgradeable__collection_book_reward_target_updated]
+description = "`CollectionBookRewardTargetUpdated(address)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookRewardTargetUpdated(address) event"
+
+[table.collection_book_upgradeable__collection_book_reward_target_updated.columns]
+doudochainV2RewardTarget = "The `doudochainV2RewardTarget` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_slot_defined]
+description = "`CollectionBookSlotDefined(uint256,uint256,address,uint256,uint256,uint32)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookSlotDefined(uint256,uint256,address,uint256,uint256,uint32) event"
+
+[table.collection_book_upgradeable__collection_book_slot_defined.columns]
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+prizeId = "The `prizeId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+quantity = "The `quantity` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+slotIndex = "The `slotIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sourceContract = "The `sourceContract` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_slot_defined.footguns]
+big_ints = [
+    "bookId",
+    "slotIndex",
+    "seriesID",
+    "prizeId",
+]
+overflows_dec = [
+    "bookId",
+    "slotIndex",
+    "seriesID",
+    "prizeId",
+]
+
+[table.collection_book_upgradeable__collection_book_slot_emptied]
+description = "`CollectionBookSlotEmptied(address,uint256,uint256,address,uint256,uint32)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookSlotEmptied(address,uint256,uint256,address,uint256,uint32) event"
+
+[table.collection_book_upgradeable__collection_book_slot_emptied.columns]
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+newFilledCount = "The `newFilledCount` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+slotIndex = "The `slotIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sourceContract = "The `sourceContract` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_slot_emptied.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "bookId",
+    "slotIndex",
+    "tokenId",
+]
+overflows_dec = [
+    "bookId",
+    "slotIndex",
+    "tokenId",
+]
+
+[table.collection_book_upgradeable__collection_book_slot_filled]
+description = "`CollectionBookSlotFilled(address,uint256,uint256,address,uint256,uint32)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookSlotFilled(address,uint256,uint256,address,uint256,uint32) event"
+
+[table.collection_book_upgradeable__collection_book_slot_filled.columns]
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+newFilledCount = "The `newFilledCount` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+slotIndex = "The `slotIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sourceContract = "The `sourceContract` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_slot_filled.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "bookId",
+    "slotIndex",
+    "tokenId",
+]
+overflows_dec = [
+    "bookId",
+    "slotIndex",
+    "tokenId",
+]
+
+[table.collection_book_upgradeable__collection_book_status_updated]
+description = "`CollectionBookStatusUpdated(uint256,bool)` events emitted by the `collection_book_upgradeable` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionBookStatusUpdated(uint256,bool) event"
+
+[table.collection_book_upgradeable__collection_book_status_updated.columns]
+active = "The `active` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `active = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `active = 'true'` or `CAST(active AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+bookId = "The `bookId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.collection_book_upgradeable__collection_book_status_updated.footguns]
+big_ints = ["bookId"]
+overflows_dec = ["bookId"]
+bools = ["active"]
+
+[table.contract__admin_changed]
+description = "`AdminChanged(address,address)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per AdminChanged(address,address) event"
+
+[table.contract__admin_changed.columns]
+newAdmin = "The `newAdmin` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+previousAdmin = "The `previousAdmin` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__approval]
+description = "`Approval(address,address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Approval(address,address,uint256) event"
+
+[table.contract__approval.columns]
+approved = "The `approved` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__approval.footguns]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__approval_for_all]
+description = "`ApprovalForAll(address,address,bool)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ApprovalForAll(address,address,bool) event"
+
+[table.contract__approval_for_all.columns]
+approved = "The `approved` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `approved = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `approved = 'true'` or `CAST(approved AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__approval_for_all.footguns]
+bools = ["approved"]
+
+[table.contract__legacy_membership_migrated]
+description = "`LegacyMembershipMigrated(uint256,address,uint256,uint256,uint256,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LegacyMembershipMigrated(uint256,address,uint256,uint256,uint256,uint256) event"
+
+[table.contract__legacy_membership_migrated.columns]
+currentRoundRedeemed = "The `currentRoundRedeemed` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+lastActiveTimestamp = "The `lastActiveTimestamp` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+membershipLevel = "The `membershipLevel` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalRedeemed = "The `totalRedeemed` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__legacy_membership_migrated.footguns]
+big_ints = [
+    "tokenId",
+    "membershipLevel",
+    "totalRedeemed",
+    "currentRoundRedeemed",
+    "lastActiveTimestamp",
+]
+overflows_dec = [
+    "tokenId",
+    "membershipLevel",
+    "totalRedeemed",
+    "currentRoundRedeemed",
+    "lastActiveTimestamp",
+]
+
+[table.contract__legacy_voucher_migrated]
+description = "`LegacyVoucherMigrated(uint256,address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LegacyVoucherMigrated(uint256,address,uint256) event"
+
+[table.contract__legacy_voucher_migrated.columns]
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+voucherTypeId = "The `voucherTypeId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__legacy_voucher_migrated.footguns]
+big_ints = [
+    "tokenId",
+    "voucherTypeId",
+]
+overflows_dec = [
+    "tokenId",
+    "voucherTypeId",
+]
+
+[table.contract__membership_expired]
+description = "`MembershipExpired(address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipExpired(address,uint256) event"
+
+[table.contract__membership_expired.columns]
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_expired.footguns]
+reserved_words = ["user"]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__membership_level_created]
+description = "`MembershipLevelCreated(uint256,string,uint256,string,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipLevelCreated(uint256,string,uint256,string,uint256) event"
+
+[table.contract__membership_level_created.columns]
+levelIndex = "The `levelIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+membershipTokenURI = "The `membershipTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+name = "The `name` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardBasisPoints = "The `rewardBasisPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+threshold = "The `threshold` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_level_created.footguns]
+big_ints = [
+    "levelIndex",
+    "threshold",
+    "rewardBasisPoints",
+]
+overflows_dec = [
+    "levelIndex",
+    "threshold",
+    "rewardBasisPoints",
+]
+
+[table.contract__membership_level_updated]
+description = "`MembershipLevelUpdated(uint256,uint256,string,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipLevelUpdated(uint256,uint256,string,uint256) event"
+
+[table.contract__membership_level_updated.columns]
+levelIndex = "The `levelIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+membershipTokenURI = "The `membershipTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardBasisPoints = "The `rewardBasisPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+threshold = "The `threshold` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_level_updated.footguns]
+big_ints = [
+    "levelIndex",
+    "threshold",
+    "rewardBasisPoints",
+]
+overflows_dec = [
+    "levelIndex",
+    "threshold",
+    "rewardBasisPoints",
+]
+
+[table.contract__membership_n_f_t_burned]
+description = "`MembershipNFTBurned(address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipNFTBurned(address,uint256) event"
+
+[table.contract__membership_n_f_t_burned.columns]
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_n_f_t_burned.footguns]
+reserved_words = ["user"]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__membership_renewed]
+description = "`MembershipRenewed(address,uint256,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipRenewed(address,uint256,uint256) event"
+
+[table.contract__membership_renewed.columns]
+newExpiryDate = "The `newExpiryDate` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_renewed.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "tokenId",
+    "newExpiryDate",
+]
+overflows_dec = [
+    "tokenId",
+    "newExpiryDate",
+]
+
+[table.contract__membership_transferred]
+description = "`MembershipTransferred(address,address,uint256,string)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipTransferred(address,address,uint256,string) event"
+
+[table.contract__membership_transferred.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+levelName = "The `levelName` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_transferred.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__membership_upgraded]
+description = "`MembershipUpgraded(address,uint256,uint256,string)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MembershipUpgraded(address,uint256,uint256,string) event"
+
+[table.contract__membership_upgraded.columns]
+level = "The `level` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+levelName = "The `levelName` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__membership_upgraded.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "tokenId",
+    "level",
+]
+overflows_dec = [
+    "tokenId",
+    "level",
+]
+
+[table.contract__role_admin_changed]
+description = "`RoleAdminChanged(bytes32,bytes32,bytes32)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RoleAdminChanged(bytes32,bytes32,bytes32) event"
+
+[table.contract__role_admin_changed.columns]
+newAdminRole = "The `newAdminRole` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+previousAdminRole = "The `previousAdminRole` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+role = "The `role` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__role_granted]
+description = "`RoleGranted(bytes32,address,address)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RoleGranted(bytes32,address,address) event"
+
+[table.contract__role_granted.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+role = "The `role` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__role_revoked]
+description = "`RoleRevoked(bytes32,address,address)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RoleRevoked(bytes32,address,address) event"
+
+[table.contract__role_revoked.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+role = "The `role` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.contract__transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__voucher_minted]
+description = "`VoucherMinted(uint256,address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VoucherMinted(uint256,address,uint256) event"
+
+[table.contract__voucher_minted.columns]
+recipient = "The `recipient` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+voucherTypeId = "The `voucherTypeId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__voucher_minted.footguns]
+big_ints = [
+    "tokenId",
+    "voucherTypeId",
+]
+overflows_dec = [
+    "tokenId",
+    "voucherTypeId",
+]
+
+[table.contract__voucher_total_redeemed]
+description = "`VoucherTotalRedeemed(uint256[],address,uint256,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VoucherTotalRedeemed(uint256[],address,uint256,uint256) event"
+
+[table.contract__voucher_total_redeemed.columns]
+additionalReward = "The `additionalReward` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+redeemer = "The `redeemer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenIds = "The `tokenIds` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalAmount = "The `totalAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__voucher_total_redeemed.footguns]
+big_ints = [
+    "totalAmount",
+    "additionalReward",
+]
+overflows_dec = [
+    "totalAmount",
+    "additionalReward",
+]
+
+[table.contract__voucher_transferred]
+description = "`VoucherTransferred(address,address,uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VoucherTransferred(address,address,uint256) event"
+
+[table.contract__voucher_transferred.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__voucher_transferred.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.contract__voucher_type_created]
+description = "`VoucherTypeCreated(uint256,uint256,uint256,string)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VoucherTypeCreated(uint256,uint256,uint256,string) event"
+
+[table.contract__voucher_type_created.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+maxPerUser = "The `maxPerUser` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenURI = "The `tokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+voucherTypeId = "The `voucherTypeId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__voucher_type_created.footguns]
+big_ints = [
+    "voucherTypeId",
+    "amount",
+    "maxPerUser",
+]
+overflows_dec = [
+    "voucherTypeId",
+    "amount",
+    "maxPerUser",
+]
+
+[table.contract__voucher_type_updated]
+description = "`VoucherTypeUpdated(uint256,uint256,uint256,string)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VoucherTypeUpdated(uint256,uint256,uint256,string) event"
+
+[table.contract__voucher_type_updated.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+maxPerUser = "The `maxPerUser` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenURI = "The `tokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+voucherTypeId = "The `voucherTypeId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__voucher_type_updated.footguns]
+big_ints = [
+    "voucherTypeId",
+    "amount",
+    "maxPerUser",
+]
+overflows_dec = [
+    "voucherTypeId",
+    "amount",
+    "maxPerUser",
+]
+
+[table.contract__vouchers_issued_from_subscription]
+description = "`VouchersIssuedFromSubscription(address,uint256[],uint256[],uint256)` events emitted by the `contract` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VouchersIssuedFromSubscription(address,uint256[],uint256[],uint256) event"
+
+[table.contract__vouchers_issued_from_subscription.columns]
+amounts = "The `amounts` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalAmount = "The `totalAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+voucherTypeIds = "The `voucherTypeIds` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.contract__vouchers_issued_from_subscription.footguns]
+reserved_words = ["user"]
+big_ints = ["totalAmount"]
+overflows_dec = ["totalAmount"]
+
+[table.doudo_bundle_module__bundle_rebate_tier_configured]
+description = "`BundleRebateTierConfigured(uint256,uint256,uint256,uint256)` events emitted by the `doudo_bundle_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per BundleRebateTierConfigured(uint256,uint256,uint256,uint256) event"
+
+[table.doudo_bundle_module__bundle_rebate_tier_configured.columns]
+minimumTicketQuantity = "The `minimumTicketQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rebatePoints = "The `rebatePoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tierIndex = "The `tierIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_bundle_module__bundle_rebate_tier_configured.footguns]
+big_ints = [
+    "seriesID",
+    "tierIndex",
+    "minimumTicketQuantity",
+    "rebatePoints",
+]
+overflows_dec = [
+    "seriesID",
+    "tierIndex",
+    "minimumTicketQuantity",
+    "rebatePoints",
+]
+
+[table.doudo_bundle_module__bundle_rebate_tiers_cleared]
+description = "`BundleRebateTiersCleared(uint256)` events emitted by the `doudo_bundle_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per BundleRebateTiersCleared(uint256) event"
+
+[table.doudo_bundle_module__bundle_rebate_tiers_cleared.columns]
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_bundle_module__bundle_rebate_tiers_cleared.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.doudo_bundle_module__ticket_purchase_minted]
+description = "`TicketPurchaseMinted(uint256,address,uint256,uint256,bool,uint256)` events emitted by the `doudo_bundle_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TicketPurchaseMinted(uint256,address,uint256,uint256,bool,uint256) event"
+
+[table.doudo_bundle_module__ticket_purchase_minted.columns]
+buyer = "The `buyer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+firstTokenID = "The `firstTokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+priceInPoints = "The `priceInPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+revealImmediately = "The `revealImmediately` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `revealImmediately = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `revealImmediately = 'true'` or `CAST(revealImmediately AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+ticketQuantity = "The `ticketQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_bundle_module__ticket_purchase_minted.footguns]
+big_ints = [
+    "seriesID",
+    "ticketQuantity",
+    "priceInPoints",
+    "firstTokenID",
+]
+overflows_dec = [
+    "seriesID",
+    "ticketQuantity",
+    "priceInPoints",
+    "firstTokenID",
+]
+bools = ["revealImmediately"]
+
+[table.doudo_bundle_module__ticket_purchase_rebate_paid]
+description = "`TicketPurchaseRebatePaid(uint256,address,uint256,uint256)` events emitted by the `doudo_bundle_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TicketPurchaseRebatePaid(uint256,address,uint256,uint256) event"
+
+[table.doudo_bundle_module__ticket_purchase_rebate_paid.columns]
+buyer = "The `buyer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rebatePoints = "The `rebatePoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+ticketQuantity = "The `ticketQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_bundle_module__ticket_purchase_rebate_paid.footguns]
+big_ints = [
+    "seriesID",
+    "ticketQuantity",
+    "rebatePoints",
+]
+overflows_dec = [
+    "seriesID",
+    "ticketQuantity",
+    "rebatePoints",
+]
+
+[table.doudo_collection_reward_module__collection_reward_config_set]
+description = "`CollectionRewardConfigSet(uint256,uint8,uint256,uint256,uint256,bool)` events emitted by the `doudo_collection_reward_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionRewardConfigSet(uint256,uint8,uint256,uint256,uint256,bool) event"
+
+[table.doudo_collection_reward_module__collection_reward_config_set.columns]
+active = "The `active` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `active = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `active = 'true'` or `CAST(active AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+collectionBookID = "The `collectionBookID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+pointsAmount = "The `pointsAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+prizeID = "The `prizeID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardKind = "The `rewardKind` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_collection_reward_module__collection_reward_config_set.footguns]
+big_ints = [
+    "collectionBookID",
+    "pointsAmount",
+    "seriesID",
+    "prizeID",
+]
+overflows_dec = [
+    "collectionBookID",
+    "pointsAmount",
+    "seriesID",
+    "prizeID",
+]
+bools = ["active"]
+
+[table.doudo_collection_reward_module__collection_reward_minted]
+description = "`CollectionRewardMinted(uint256,address,uint8,uint256,uint256)` events emitted by the `doudo_collection_reward_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectionRewardMinted(uint256,address,uint8,uint256,uint256) event"
+
+[table.doudo_collection_reward_module__collection_reward_minted.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collectionBookID = "The `collectionBookID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+rewardKind = "The `rewardKind` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenID = "The `tokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_collection_reward_module__collection_reward_minted.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "collectionBookID",
+    "amount",
+    "tokenID",
+]
+overflows_dec = [
+    "collectionBookID",
+    "amount",
+    "tokenID",
+]
+
+[table.doudo_collection_reward_module__series_unlocked_for]
+description = "`SeriesUnlockedFor(uint256,address,uint256)` events emitted by the `doudo_collection_reward_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesUnlockedFor(uint256,address,uint256) event"
+
+[table.doudo_collection_reward_module__series_unlocked_for.columns]
+expires = "The `expires` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_collection_reward_module__series_unlocked_for.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "seriesID",
+    "expires",
+]
+overflows_dec = [
+    "seriesID",
+    "expires",
+]
+
+[table.doudo_core_vrf_router__requester_updated]
+description = "`RequesterUpdated(address,bool)` events emitted by the `doudo_core_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RequesterUpdated(address,bool) event"
+
+[table.doudo_core_vrf_router__requester_updated.columns]
+allowed = "The `allowed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `allowed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `allowed = 'true'` or `CAST(allowed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+requester = "The `requester` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_core_vrf_router__requester_updated.footguns]
+bools = ["allowed"]
+
+[table.doudo_core_vrf_router__vrf_config_updated]
+description = "`VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address)` events emitted by the `doudo_core_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address) event"
+
+[table.doudo_core_vrf_router__vrf_config_updated.columns]
+callbackGasLimit = "The `callbackGasLimit` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+keyHash = "The `keyHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestConfirmations = "The `requestConfirmations` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subscriptionId = "The `subscriptionId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vrfCoordinator = "The `vrfCoordinator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_core_vrf_router__vrf_config_updated.footguns]
+big_ints = ["subscriptionId"]
+overflows_dec = ["subscriptionId"]
+
+[table.doudo_core_vrf_router__vrf_random_words_fulfilled]
+description = "`VrfRandomWordsFulfilled(uint256,address)` events emitted by the `doudo_core_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfRandomWordsFulfilled(uint256,address) event"
+
+[table.doudo_core_vrf_router__vrf_random_words_fulfilled.columns]
+callbackTarget = "The `callbackTarget` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_core_vrf_router__vrf_random_words_fulfilled.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[table.doudo_core_vrf_router__vrf_random_words_requested]
+description = "`VrfRandomWordsRequested(uint256,address,address,uint32)` events emitted by the `doudo_core_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfRandomWordsRequested(uint256,address,address,uint32) event"
+
+[table.doudo_core_vrf_router__vrf_random_words_requested.columns]
+callbackTarget = "The `callbackTarget` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+numWords = "The `numWords` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requester = "The `requester` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_core_vrf_router__vrf_random_words_requested.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[table.doudo_redraw_module__consolation_draw_balance_updated]
+description = "`ConsolationDrawBalanceUpdated(uint256,address,uint256)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ConsolationDrawBalanceUpdated(uint256,address,uint256) event"
+
+[table.doudo_redraw_module__consolation_draw_balance_updated.columns]
+balance = "The `balance` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__consolation_draw_balance_updated.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "seriesID",
+    "balance",
+]
+overflows_dec = [
+    "seriesID",
+    "balance",
+]
+
+[table.doudo_redraw_module__new_consolation_prize]
+description = "`NewConsolationPrize(uint256,uint256,string,string,uint256)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewConsolationPrize(uint256,uint256,string,string,uint256) event"
+
+[table.doudo_redraw_module__new_consolation_prize.columns]
+prizeGroup = "The `prizeGroup` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+remainingQuantity = "The `remainingQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeID = "The `subPrizeID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeName = "The `subPrizeName` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__new_consolation_prize.footguns]
+big_ints = [
+    "seriesID",
+    "subPrizeID",
+    "remainingQuantity",
+]
+overflows_dec = [
+    "seriesID",
+    "subPrizeID",
+    "remainingQuantity",
+]
+
+[table.doudo_redraw_module__redraw_config_updated]
+description = "`RedrawConfigUpdated(uint256,uint16,uint16)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawConfigUpdated(uint256,uint16,uint16) event"
+
+[table.doudo_redraw_module__redraw_config_updated.columns]
+consolationBurnCount = "The `consolationBurnCount` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+mainBurnCount = "The `mainBurnCount` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_config_updated.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.doudo_redraw_module__redraw_enabled_updated]
+description = "`RedrawEnabledUpdated(uint256,bool)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawEnabledUpdated(uint256,bool) event"
+
+[table.doudo_redraw_module__redraw_enabled_updated.columns]
+enabled = "The `enabled` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `enabled = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `enabled = 'true'` or `CAST(enabled AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_enabled_updated.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+bools = ["enabled"]
+
+[table.doudo_redraw_module__redraw_fulfilled]
+description = "`RedrawFulfilled(uint256,uint256,address,uint256,bool)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawFulfilled(uint256,uint256,address,uint256,bool) event"
+
+[table.doudo_redraw_module__redraw_fulfilled.columns]
+consolation = "The `consolation` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `consolation = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `consolation = 'true'` or `CAST(consolation AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenID = "The `tokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_fulfilled.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "requestId",
+    "seriesID",
+    "tokenID",
+]
+overflows_dec = [
+    "requestId",
+    "seriesID",
+    "tokenID",
+]
+bools = ["consolation"]
+
+[table.doudo_redraw_module__redraw_main_config_updated]
+description = "`RedrawMainConfigUpdated(uint256,uint16,uint16)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawMainConfigUpdated(uint256,uint16,uint16) event"
+
+[table.doudo_redraw_module__redraw_main_config_updated.columns]
+mainBurnCount = "The `mainBurnCount` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+mainMintCount = "The `mainMintCount` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_main_config_updated.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.doudo_redraw_module__redraw_minted]
+description = "`RedrawMinted(uint256,address,uint256,uint256)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawMinted(uint256,address,uint256,uint256) event"
+
+[table.doudo_redraw_module__redraw_minted.columns]
+firstTokenID = "The `firstTokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+quantity = "The `quantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_minted.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "seriesID",
+    "quantity",
+    "firstTokenID",
+]
+overflows_dec = [
+    "seriesID",
+    "quantity",
+    "firstTokenID",
+]
+
+[table.doudo_redraw_module__redraw_requested]
+description = "`RedrawRequested(uint256,uint256,address,bool)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RedrawRequested(uint256,uint256,address,bool) event"
+
+[table.doudo_redraw_module__redraw_requested.columns]
+consolation = "The `consolation` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `consolation = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `consolation = 'true'` or `CAST(consolation AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__redraw_requested.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "requestId",
+    "seriesID",
+]
+overflows_dec = [
+    "requestId",
+    "seriesID",
+]
+bools = ["consolation"]
+
+[table.doudo_redraw_module__router_updated]
+description = "`RouterUpdated(address)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RouterUpdated(address) event"
+
+[table.doudo_redraw_module__router_updated.columns]
+router = "The `router` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__update_consolation_prize]
+description = "`UpdateConsolationPrize(uint256,uint256,uint256)` events emitted by the `doudo_redraw_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateConsolationPrize(uint256,uint256,uint256) event"
+
+[table.doudo_redraw_module__update_consolation_prize.columns]
+remainingQuantity = "The `remainingQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeID = "The `subPrizeID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_redraw_module__update_consolation_prize.footguns]
+big_ints = [
+    "seriesID",
+    "subPrizeID",
+    "remainingQuantity",
+]
+overflows_dec = [
+    "seriesID",
+    "subPrizeID",
+    "remainingQuantity",
+]
+
+[table.doudo_refund_module__refund_claimed]
+description = "`RefundClaimed(uint256,address,uint256[],uint256)` events emitted by the `doudo_refund_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RefundClaimed(uint256,address,uint256[],uint256) event"
+
+[table.doudo_refund_module__refund_claimed.columns]
+refundPoints = "The `refundPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenIDs = "The `tokenIDs` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_refund_module__refund_claimed.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "seriesID",
+    "refundPoints",
+]
+overflows_dec = [
+    "seriesID",
+    "refundPoints",
+]
+
+[table.doudo_refund_module__refund_series]
+description = "`RefundSeries(uint256,bool,uint256)` events emitted by the `doudo_refund_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RefundSeries(uint256,bool,uint256) event"
+
+[table.doudo_refund_module__refund_series.columns]
+isRefund = "The `isRefund` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isRefund = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isRefund = 'true'` or `CAST(isRefund AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+refundPointsPerTicket = "The `refundPointsPerTicket` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_refund_module__refund_series.footguns]
+big_ints = [
+    "seriesID",
+    "refundPointsPerTicket",
+]
+overflows_dec = [
+    "seriesID",
+    "refundPointsPerTicket",
+]
+bools = ["isRefund"]
+
+[table.doudo_series_ops_module__mint_lock_updated]
+description = "`MintLockUpdated(uint256,address,uint256)` events emitted by the `doudo_series_ops_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MintLockUpdated(uint256,address,uint256) event"
+
+[table.doudo_series_ops_module__mint_lock_updated.columns]
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+until = "The `until` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_series_ops_module__mint_lock_updated.footguns]
+big_ints = [
+    "seriesID",
+    "until",
+]
+overflows_dec = [
+    "seriesID",
+    "until",
+]
+
+[table.doudo_series_ops_module__series_lock_duration_updated]
+description = "`SeriesLockDurationUpdated(uint256,uint256)` events emitted by the `doudo_series_ops_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesLockDurationUpdated(uint256,uint256) event"
+
+[table.doudo_series_ops_module__series_lock_duration_updated.columns]
+duration = "The `duration` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_series_ops_module__series_lock_duration_updated.footguns]
+big_ints = [
+    "seriesID",
+    "duration",
+]
+overflows_dec = [
+    "seriesID",
+    "duration",
+]
+
+[table.doudo_series_ops_module__series_max_per_wallet_updated]
+description = "`SeriesMaxPerWalletUpdated(uint256,uint256)` events emitted by the `doudo_series_ops_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesMaxPerWalletUpdated(uint256,uint256) event"
+
+[table.doudo_series_ops_module__series_max_per_wallet_updated.columns]
+maxPerWallet = "The `maxPerWallet` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_series_ops_module__series_max_per_wallet_updated.footguns]
+big_ints = [
+    "seriesID",
+    "maxPerWallet",
+]
+overflows_dec = [
+    "seriesID",
+    "maxPerWallet",
+]
+
+[table.doudo_series_ops_module__series_reveal_enabled_updated]
+description = "`SeriesRevealEnabledUpdated(uint256,bool)` events emitted by the `doudo_series_ops_module` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesRevealEnabledUpdated(uint256,bool) event"
+
+[table.doudo_series_ops_module__series_reveal_enabled_updated.columns]
+enabled = "The `enabled` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `enabled = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `enabled = 'true'` or `CAST(enabled AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_series_ops_module__series_reveal_enabled_updated.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+bools = ["enabled"]
+
+[table.doudo_vrf_router__requester_updated]
+description = "`RequesterUpdated(address,bool)` events emitted by the `doudo_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RequesterUpdated(address,bool) event"
+
+[table.doudo_vrf_router__requester_updated.columns]
+allowed = "The `allowed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `allowed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `allowed = 'true'` or `CAST(allowed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+requester = "The `requester` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_vrf_router__requester_updated.footguns]
+bools = ["allowed"]
+
+[table.doudo_vrf_router__vrf_config_updated]
+description = "`VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address)` events emitted by the `doudo_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfConfigUpdated(address,uint256,bytes32,uint32,uint16,address) event"
+
+[table.doudo_vrf_router__vrf_config_updated.columns]
+callbackGasLimit = "The `callbackGasLimit` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+keyHash = "The `keyHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestConfirmations = "The `requestConfirmations` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subscriptionId = "The `subscriptionId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vrfCoordinator = "The `vrfCoordinator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_vrf_router__vrf_config_updated.footguns]
+big_ints = ["subscriptionId"]
+overflows_dec = ["subscriptionId"]
+
+[table.doudo_vrf_router__vrf_random_words_fulfilled]
+description = "`VrfRandomWordsFulfilled(uint256,address)` events emitted by the `doudo_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfRandomWordsFulfilled(uint256,address) event"
+
+[table.doudo_vrf_router__vrf_random_words_fulfilled.columns]
+callbackTarget = "The `callbackTarget` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_vrf_router__vrf_random_words_fulfilled.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[table.doudo_vrf_router__vrf_random_words_requested]
+description = "`VrfRandomWordsRequested(uint256,address,address,uint32)` events emitted by the `doudo_vrf_router` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfRandomWordsRequested(uint256,address,address,uint32) event"
+
+[table.doudo_vrf_router__vrf_random_words_requested.columns]
+callbackTarget = "The `callbackTarget` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+numWords = "The `numWords` uint32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requester = "The `requester` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.doudo_vrf_router__vrf_random_words_requested.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[table.ichichain__admin_minted]
+description = "`AdminMinted(address,address,uint256,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per AdminMinted(address,address,uint256,uint256) event"
+
+[table.ichichain__admin_minted.columns]
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+quantity = "The `quantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__admin_minted.footguns]
+reserved_words = ["to"]
+big_ints = [
+    "seriesID",
+    "quantity",
+]
+overflows_dec = [
+    "seriesID",
+    "quantity",
+]
+
+[table.ichichain__approval]
+description = "`Approval(address,address,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Approval(address,address,uint256) event"
+
+[table.ichichain__approval.columns]
+approved = "The `approved` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__approval.footguns]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.ichichain__approval_for_all]
+description = "`ApprovalForAll(address,address,bool)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ApprovalForAll(address,address,bool) event"
+
+[table.ichichain__approval_for_all.columns]
+approved = "The `approved` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `approved = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `approved = 'true'` or `CAST(approved AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__approval_for_all.footguns]
+bools = ["approved"]
+
+[table.ichichain__consecutive_transfer]
+description = "`ConsecutiveTransfer(uint256,uint256,address,address)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ConsecutiveTransfer(uint256,uint256,address,address) event"
+
+[table.ichichain__consecutive_transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+fromTokenId = "The `fromTokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+toTokenId = "The `toTokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__consecutive_transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = [
+    "fromTokenId",
+    "toTokenId",
+]
+overflows_dec = [
+    "fromTokenId",
+    "toTokenId",
+]
+
+[table.ichichain__last_prize_draw]
+description = "`LastPrizeDraw(uint256,uint256,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LastPrizeDraw(uint256,uint256,uint256) event"
+
+[table.ichichain__last_prize_draw.columns]
+quantity = "The `quantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__last_prize_draw.footguns]
+big_ints = [
+    "requestId",
+    "seriesID",
+    "quantity",
+]
+overflows_dec = [
+    "requestId",
+    "seriesID",
+    "quantity",
+]
+
+[table.ichichain__last_prize_winner]
+description = "`LastPrizeWinner(uint256,uint256[])` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LastPrizeWinner(uint256,uint256[]) event"
+
+[table.ichichain__last_prize_winner.columns]
+randomWord = "The `randomWord` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__last_prize_winner.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[table.ichichain__mint_lock_updated]
+description = "`MintLockUpdated(uint256,address,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MintLockUpdated(uint256,address,uint256) event"
+
+[table.ichichain__mint_lock_updated.columns]
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+until = "The `until` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__mint_lock_updated.footguns]
+big_ints = [
+    "seriesID",
+    "until",
+]
+overflows_dec = [
+    "seriesID",
+    "until",
+]
+
+[table.ichichain__new_series]
+description = "`NewSeries(uint256,string,uint256,uint256,uint256,uint256,bool,uint256,uint256,string,string,string,string,address,bool,bool)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewSeries(uint256,string,uint256,uint256,uint256,uint256,bool,uint256,uint256,string,string,string,string,address,bool,bool) event"
+
+[table.ichichain__new_series.columns]
+estimateDeliverTime = "The `estimateDeliverTime` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+exchangeExpireTime = "The `exchangeExpireTime` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+exchangeTokenURI = "The `exchangeTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+isGoodsArrived = "The `isGoodsArrived` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isGoodsArrived = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isGoodsArrived = 'true'` or `CAST(isGoodsArrived AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+isPreOrder = "The `isPreOrder` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isPreOrder = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isPreOrder = 'true'` or `CAST(isPreOrder AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+isRefund = "The `isRefund` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isRefund = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isRefund = 'true'` or `CAST(isRefund AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+lastPrizeOwner = "The `lastPrizeOwner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+priceInTWD = "The `priceInTWD` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+priceInUSDTWei = "The `priceInUSDTWei` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+remainingTicketNumbers = "The `remainingTicketNumbers` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+revealTokenURI = "The `revealTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesMetaDataURI = "The `seriesMetaDataURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesName = "The `seriesName` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalTicketNumbers = "The `totalTicketNumbers` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+unrevealTokenURI = "The `unrevealTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__new_series.footguns]
+big_ints = [
+    "seriesID",
+    "totalTicketNumbers",
+    "remainingTicketNumbers",
+    "priceInUSDTWei",
+    "priceInTWD",
+    "estimateDeliverTime",
+    "exchangeExpireTime",
+]
+overflows_dec = [
+    "seriesID",
+    "totalTicketNumbers",
+    "remainingTicketNumbers",
+    "priceInUSDTWei",
+    "priceInTWD",
+    "estimateDeliverTime",
+    "exchangeExpireTime",
+]
+bools = [
+    "isGoodsArrived",
+    "isRefund",
+    "isPreOrder",
+]
+
+[table.ichichain__new_sub_prize]
+description = "`NewSubPrize(uint256,uint256,string,string,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewSubPrize(uint256,uint256,string,string,uint256) event"
+
+[table.ichichain__new_sub_prize.columns]
+prizeGroup = "The `prizeGroup` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeID = "The `subPrizeID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeName = "The `subPrizeName` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeRemainingQuantity = "The `subPrizeRemainingQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__new_sub_prize.footguns]
+big_ints = [
+    "seriesID",
+    "subPrizeID",
+    "subPrizeRemainingQuantity",
+]
+overflows_dec = [
+    "seriesID",
+    "subPrizeID",
+    "subPrizeRemainingQuantity",
+]
+
+[table.ichichain__new_ticket_status]
+description = "`NewTicketStatus(uint256,uint256,uint256,bool,bool,address,uint16)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per NewTicketStatus(uint256,uint256,uint256,bool,bool,address,uint16) event"
+
+[table.ichichain__new_ticket_status.columns]
+luckyNumber = "The `luckyNumber` uint16 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenExchange = "The `tokenExchange` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `tokenExchange = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `tokenExchange = 'true'` or `CAST(tokenExchange AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenID = "The `tokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenOwner = "The `tokenOwner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenRevealed = "The `tokenRevealed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `tokenRevealed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `tokenRevealed = 'true'` or `CAST(tokenRevealed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenRevealedPrize = "The `tokenRevealedPrize` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__new_ticket_status.footguns]
+big_ints = [
+    "tokenID",
+    "seriesID",
+    "tokenRevealedPrize",
+]
+overflows_dec = [
+    "tokenID",
+    "seriesID",
+    "tokenRevealedPrize",
+]
+bools = [
+    "tokenExchange",
+    "tokenRevealed",
+]
+
+[table.ichichain__series_unlocked_for]
+description = "`SeriesUnlockedFor(uint256,address,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesUnlockedFor(uint256,address,uint256) event"
+
+[table.ichichain__series_unlocked_for.columns]
+expires = "The `expires` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__series_unlocked_for.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "seriesID",
+    "expires",
+]
+overflows_dec = [
+    "seriesID",
+    "expires",
+]
+
+[table.ichichain__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.ichichain__transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.ichichain__update_prize]
+description = "`UpdatePrize(uint256,uint256,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdatePrize(uint256,uint256,uint256) event"
+
+[table.ichichain__update_prize.columns]
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeID = "The `subPrizeID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+subPrizeRemainingQuantity = "The `subPrizeRemainingQuantity` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__update_prize.footguns]
+big_ints = [
+    "seriesID",
+    "subPrizeID",
+    "subPrizeRemainingQuantity",
+]
+overflows_dec = [
+    "seriesID",
+    "subPrizeID",
+    "subPrizeRemainingQuantity",
+]
+
+[table.ichichain__update_series_information]
+description = "`UpdateSeriesInformation(uint256,bool,uint256,uint256,string,string,string,string)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateSeriesInformation(uint256,bool,uint256,uint256,string,string,string,string) event"
+
+[table.ichichain__update_series_information.columns]
+estimateDeliverTime = "The `estimateDeliverTime` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+exchangeExpireTime = "The `exchangeExpireTime` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+exchangeTokenURI = "The `exchangeTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+isGoodsArrived = "The `isGoodsArrived` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isGoodsArrived = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isGoodsArrived = 'true'` or `CAST(isGoodsArrived AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+revealTokenURI = "The `revealTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesMetaDataURI = "The `seriesMetaDataURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+unrevealTokenURI = "The `unrevealTokenURI` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__update_series_information.footguns]
+big_ints = [
+    "seriesID",
+    "estimateDeliverTime",
+    "exchangeExpireTime",
+]
+overflows_dec = [
+    "seriesID",
+    "estimateDeliverTime",
+    "exchangeExpireTime",
+]
+bools = ["isGoodsArrived"]
+
+[table.ichichain__update_series_last_prize_owner]
+description = "`UpdateSeriesLastPrizeOwner(uint256,address[])` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateSeriesLastPrizeOwner(uint256,address[]) event"
+
+[table.ichichain__update_series_last_prize_owner.columns]
+lastPrizeOwner = "The `lastPrizeOwner` address[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__update_series_last_prize_owner.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.ichichain__update_series_remaining_ticket_numbers]
+description = "`UpdateSeriesRemainingTicketNumbers(uint256,uint256)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateSeriesRemainingTicketNumbers(uint256,uint256) event"
+
+[table.ichichain__update_series_remaining_ticket_numbers.columns]
+remainingTicketNumbers = "The `remainingTicketNumbers` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__update_series_remaining_ticket_numbers.footguns]
+big_ints = [
+    "seriesID",
+    "remainingTicketNumbers",
+]
+overflows_dec = [
+    "seriesID",
+    "remainingTicketNumbers",
+]
+
+[table.ichichain__update_ticket_status]
+description = "`UpdateTicketStatus(uint256,uint256,uint256,bool,bool)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateTicketStatus(uint256,uint256,uint256,bool,bool) event"
+
+[table.ichichain__update_ticket_status.columns]
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenExchange = "The `tokenExchange` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `tokenExchange = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `tokenExchange = 'true'` or `CAST(tokenExchange AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenID = "The `tokenID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenRevealed = "The `tokenRevealed` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `tokenRevealed = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `tokenRevealed = 'true'` or `CAST(tokenRevealed AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenRevealedPrize = "The `tokenRevealedPrize` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.ichichain__update_ticket_status.footguns]
+big_ints = [
+    "tokenID",
+    "seriesID",
+    "tokenRevealedPrize",
+]
+overflows_dec = [
+    "tokenID",
+    "seriesID",
+    "tokenRevealedPrize",
+]
+bools = [
+    "tokenExchange",
+    "tokenRevealed",
+]
+
+[table.ichichain__vrf_router_updated]
+description = "`VrfRouterUpdated(address,address)` events emitted by the `ichichain` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per VrfRouterUpdated(address,address) event"
+
+[table.ichichain__vrf_router_updated.columns]
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+vrfRouter = "The `vrfRouter` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.merchant_series_publisher__series_source_tagged]
+description = "`SeriesSourceTagged(address,uint256,uint8,uint8)` events emitted by the `merchant_series_publisher` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesSourceTagged(address,uint256,uint8,uint8) event"
+
+[table.merchant_series_publisher__series_source_tagged.columns]
+core = "The `core` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+packingType = "The `packingType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sourceType = "The `sourceType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.merchant_series_publisher__series_source_tagged.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.merchant_series_registry__series_merchant_linked]
+description = "`SeriesMerchantLinked(address,uint256,bytes32,address)` events emitted by the `merchant_series_registry` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesMerchantLinked(address,uint256,bytes32,address) event"
+
+[table.merchant_series_registry__series_merchant_linked.columns]
+merchantRef = "The `merchantRef` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesContract = "The `seriesContract` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.merchant_series_registry__series_merchant_linked.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.merchant_series_registry__series_merchant_relinked]
+description = "`SeriesMerchantRelinked(address,uint256,bytes32,bytes32,address)` events emitted by the `merchant_series_registry` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SeriesMerchantRelinked(address,uint256,bytes32,bytes32,address) event"
+
+[table.merchant_series_registry__series_merchant_relinked.columns]
+newMerchantRef = "The `newMerchantRef` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+operator = "The `operator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+previousMerchantRef = "The `previousMerchantRef` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesContract = "The `seriesContract` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.merchant_series_registry__series_merchant_relinked.footguns]
+big_ints = ["seriesID"]
+overflows_dec = ["seriesID"]
+
+[table.reveal_on_chain_data__reveal_draw_fulfilled]
+description = "`RevealDrawFulfilled(uint256,uint256,uint256[])` events emitted by the `reveal_on_chain_data` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RevealDrawFulfilled(uint256,uint256,uint256[]) event"
+
+[table.reveal_on_chain_data__reveal_draw_fulfilled.columns]
+randomWords = "The `randomWords` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seriesID = "The `seriesID` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.reveal_on_chain_data__reveal_draw_fulfilled.footguns]
+big_ints = [
+    "requestId",
+    "seriesID",
+]
+overflows_dec = [
+    "requestId",
+    "seriesID",
+]
+
+[table.reveal_on_chain_data__reveal_draw_sent]
+description = "`RevealDrawSent(uint256,uint256[])` events emitted by the `reveal_on_chain_data` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RevealDrawSent(uint256,uint256[]) event"
+
+[table.reveal_on_chain_data__reveal_draw_sent.columns]
+requestId = "The `requestId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenIDs = "The `tokenIDs` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.reveal_on_chain_data__reveal_draw_sent.footguns]
+big_ints = ["requestId"]
+overflows_dec = ["requestId"]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."

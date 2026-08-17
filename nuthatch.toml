@@ -1,0 +1,196 @@
+[nest]
+name = "ichichain-nest"
+chain = "arbitrum-one"
+chain_id = 42161
+rpc_urls = [
+    "https://arb1.arbitrum.io/rpc",
+    "https://arb-pokt.nodies.app",
+]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "ichichain"
+address = "0x4749289f940f0c6b7cf68a19b0bdc611b80cdb0a"
+start_block = 488650672
+abi = "abis/ichichain.json"
+events = [
+    "Approval",
+    "ApprovalForAll",
+    "ConsecutiveTransfer",
+    "LastPrizeDraw",
+    "LastPrizeWinner",
+    "AdminMinted",
+    "MintLockUpdated",
+    "NewSeries",
+    "NewSubPrize",
+    "NewTicketStatus",
+    "SeriesUnlockedFor",
+    "Transfer",
+    "UpdatePrize",
+    "UpdateSeriesInformation",
+    "UpdateSeriesLastPrizeOwner",
+    "UpdateSeriesRemainingTicketNumbers",
+    "UpdateTicketStatus",
+    "VrfRouterUpdated",
+]
+
+[[contracts]]
+alias = "reveal_on_chain_data"
+address = "0x4749289f940f0c6b7cf68a19b0bdc611b80cdb0a"
+start_block = 488650672
+abi = "abis/reveal_on_chain_data.json"
+events = [
+    "RevealDrawFulfilled",
+    "RevealDrawSent",
+]
+
+[[contracts]]
+alias = "doudo_series_ops_module"
+address = "0x21a55c40a4dd25ec83dec24527cddfb232ad7e47"
+start_block = 488650695
+abi = "abis/doudo_series_ops_module.json"
+events = [
+    "MintLockUpdated",
+    "SeriesLockDurationUpdated",
+    "SeriesMaxPerWalletUpdated",
+    "SeriesRevealEnabledUpdated",
+]
+
+[[contracts]]
+alias = "merchant_series_registry"
+address = "0x178ef41099ac23730e63f7593a8d83c85ac496ee"
+start_block = 488650852
+abi = "abis/merchant_series_registry.json"
+events = [
+    "SeriesMerchantLinked",
+    "SeriesMerchantRelinked",
+]
+
+[[contracts]]
+alias = "merchant_series_publisher"
+address = "0xd4df68df78e9e5389288b5c1e91eb3024060e363"
+start_block = 488650870
+abi = "abis/merchant_series_publisher.json"
+events = ["SeriesSourceTagged"]
+
+[[contracts]]
+alias = "doudo_core_vrf_router"
+address = "0x13ee37a43b012a772765089d8711b0be42984010"
+start_block = 488650631
+abi = "abis/doudo_core_vrf_router.json"
+events = [
+    "RequesterUpdated",
+    "VrfConfigUpdated",
+    "VrfRandomWordsRequested",
+    "VrfRandomWordsFulfilled",
+]
+
+[[contracts]]
+alias = "doudo_vrf_router"
+address = "0x13ee37a43b012a772765089d8711b0be42984010"
+start_block = 488650631
+abi = "abis/doudo_vrf_router.json"
+events = [
+    "RequesterUpdated",
+    "VrfConfigUpdated",
+    "VrfRandomWordsRequested",
+    "VrfRandomWordsFulfilled",
+]
+
+[[contracts]]
+alias = "doudo_bundle_module"
+address = "0x0ade18ad89b9971229d5e6588a76d4beeaae4b8f"
+start_block = 488650717
+abi = "abis/doudo_bundle_module.json"
+events = [
+    "BundleRebateTiersCleared",
+    "BundleRebateTierConfigured",
+    "TicketPurchaseMinted",
+    "TicketPurchaseRebatePaid",
+]
+
+[[contracts]]
+alias = "doudo_refund_module"
+address = "0xd1d215c050ae51cfa6eae0b236decd129ceddd3f"
+start_block = 488650740
+abi = "abis/doudo_refund_module.json"
+events = [
+    "RefundSeries",
+    "RefundClaimed",
+]
+
+[[contracts]]
+alias = "doudo_redraw_module"
+address = "0xedc87ef2124ab0ee4b6fc1522a9b0f458a9b61ed"
+start_block = 488650762
+abi = "abis/doudo_redraw_module.json"
+events = [
+    "RouterUpdated",
+    "RedrawConfigUpdated",
+    "RedrawMainConfigUpdated",
+    "RedrawEnabledUpdated",
+    "RedrawRequested",
+    "RedrawFulfilled",
+    "RedrawMinted",
+    "ConsolationDrawBalanceUpdated",
+    "NewConsolationPrize",
+    "UpdateConsolationPrize",
+]
+
+[[contracts]]
+alias = "doudo_collection_reward_module"
+address = "0x1f7d42b6e6064911c0e690ca44dc7e7d592a4549"
+start_block = 488650785
+abi = "abis/doudo_collection_reward_module.json"
+events = [
+    "CollectionRewardConfigSet",
+    "CollectionRewardMinted",
+    "SeriesUnlockedFor",
+]
+
+[[contracts]]
+alias = "collection_book_upgradeable"
+address = "0x150e44c0e1d9c80de474d9232cd958eaf05497f6"
+start_block = 488650806
+abi = "abis/collection_book_upgradeable.json"
+events = [
+    "CollectionBookCreated",
+    "CollectionBookExpirationUpdated",
+    "CollectionBookSlotDefined",
+    "CollectionBookStatusUpdated",
+    "CollectionBookRewardTargetUpdated",
+    "CollectionBookSlotFilled",
+    "CollectionBookSlotEmptied",
+    "CollectionBookClaimed",
+]
+
+[[contracts]]
+alias = "contract"
+address = "0xf1d77d5485cd80ccc32ada1100e40558eb58b5ca"
+start_block = 488650833
+abi = "abis/contract.json"
+events = [
+    "AdminChanged",
+    "Approval",
+    "ApprovalForAll",
+    "MembershipExpired",
+    "MembershipLevelCreated",
+    "MembershipLevelUpdated",
+    "MembershipNFTBurned",
+    "MembershipRenewed",
+    "MembershipTransferred",
+    "MembershipUpgraded",
+    "LegacyMembershipMigrated",
+    "LegacyVoucherMigrated",
+    "RoleAdminChanged",
+    "RoleGranted",
+    "RoleRevoked",
+    "Transfer",
+    "VoucherMinted",
+    "VoucherTotalRedeemed",
+    "VoucherTransferred",
+    "VoucherTypeCreated",
+    "VoucherTypeUpdated",
+    "VouchersIssuedFromSubscription",
+]
